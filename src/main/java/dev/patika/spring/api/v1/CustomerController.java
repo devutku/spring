@@ -1,35 +1,61 @@
-package dev.patika.spring.api;
+package dev.patika.spring.api.v1;
 
+import dev.patika.spring.business.abstracts.ICustomerService;
 import dev.patika.spring.entities.Customer;
-import dev.patika.spring.dao.CustomerRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/customer")
+@RequestMapping("/v1")
 public class CustomerController {
-    private final CustomerRepository customerRepository;
-    public CustomerController(CustomerRepository customerRepository) {
-        this.customerRepository = customerRepository;
+
+    @Autowired
+    private ICustomerService customerService;
+
+    @GetMapping("/customers")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Customer> findAll() {
+        return this.customerService.findAll();
     }
+
+    @PostMapping("/customers")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Customer save(@RequestBody Customer customer) {
+        return this.customerService.save(customer);
+    }
+
+    /*
+    //Setter
+    @Autowired
+    private ICustomerService customerService;
+
+    public void setCustomerService(ICustomerService customerService) {
+        this.customerService = customerService;
+    }
+     */
+    /*
+    //Field
+    @Autowired
+    private ICustomerService customerService;
+     */
+
+
+    /*
     @GetMapping("/")
     public String get() {
         return "Customer Get Çalıştı";
     }
+    */
     /*
     @PostMapping("/save")
     public String save(@RequestBody String data) {
         return "Gelen veri : " + data;
-    }*/
-    @GetMapping("/{id}")
-    public Customer findById(@PathVariable("id") Integer id) {
-        return this.customerRepository.findById(id).orElseThrow();
     }
-    @PostMapping("/save")
-    public Customer save(@RequestBody Customer customer) {
-        return this.customerRepository.save(customer);
-    }
+    */
+    /*
     @GetMapping("/find-all")
     public List<Customer> findAll() {
         return this.customerRepository.findAll();
@@ -45,5 +71,6 @@ public class CustomerController {
     @GetMapping("/find/{gender}")
     public List<Customer> findByGender(@PathVariable("gender") Customer.GENDER gender) {
         return this.customerRepository.findByGender(gender);
-    }
+}
+    */
 }
