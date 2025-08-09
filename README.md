@@ -7,7 +7,7 @@ Temel amaç, Spring Boot’un yapı taşlarını anlamak ve pratikte kullanabilm
 - **Spring Boot** temel yapılandırması
 - REST API oluşturma
 - Controller, Service, Repository katmanları
-- H2 veya MySQL veritabanı entegrasyonu (tercihe göre)
+- PostGRE SQL veritabanı entegrasyonu (tercihe göre)
 - Maven proje yapısı
 - Temel CRUD işlemleri
 
