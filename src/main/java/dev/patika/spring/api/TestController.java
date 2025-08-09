@@ -1,4 +1,4 @@
-package dev.patika.spring;
+package dev.patika.spring.api;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
